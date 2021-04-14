@@ -1,0 +1,9 @@
+<template>
+<div>
+<v-card
+  elevation="12"
+  loading
+  tile
+></v-card>
+</div>
+</template>
