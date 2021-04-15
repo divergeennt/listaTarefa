@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Models;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tarefas extends Models
+
+class Tarefas extends Model
 {
     use SoftDeletes;    
     public $table = 'tarefas';

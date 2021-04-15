@@ -18,6 +18,10 @@ class UsuarioService
 
     public function RealizarLogin(Request $request)
     {
+        $request->session()->get('key', 'default');
+        $request->session()->put('key', 'default');
+         $request->session()->get('data');
+        dd($request->session()->get('key'));
         return $this->UsuarioRepository->Login($request);
     }    
 }

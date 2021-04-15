@@ -14,7 +14,7 @@ const routes = [
     children: [
       {
         path: "/tarefa",
-        name: "login",
+        name: "tarefa",
         component: Tarefa,
       },
     ],

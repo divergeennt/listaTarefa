@@ -20,7 +20,7 @@ class Tarefas extends Seeder
                 'usuario_id' => rand(1,2),
                 'titulo' => Str::random(10),
                 'subtitulo' => Str::random(10),
-                'descricao' => Str::random(30),
+                'descricao' => Str::random(200),
                 'status' => array_random($status),
                 'created_at' => date("Y-m-d H:i:s"),
             ]);

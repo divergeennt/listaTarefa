@@ -16,10 +16,10 @@ class CreateUsuarioTable extends Migration
         //
         Schema::create('usuario', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('login', 15)->nullable();
-            $table->string('senha', 200)->nullable();    
-            $table->string('email', 200);           
-            $table->string('token', 500);           
+            $table->string('login', 15);
+            $table->string('senha', 200);    
+            $table->string('email', 200)->nullable();           
+            $table->string('token', 500)->nullable();           
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });

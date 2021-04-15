@@ -17,7 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('authtoken',   'AutenticacaoController@authtoken')->middleware('JwtAutenticacao');
+
 Route::post('usuario/login', 'UsuarioController@RealizaLogin');
-Route::post('taferas/listarTarefas', 'TarefasController@listarTarefas');//->middleware();
+Route::get('taferas/listarTarefas/{id}', 'TarefasController@listaTarefas');//->middleware();
 
 

@@ -8,7 +8,6 @@ use App\Models\Usuario;
 use App\Services\UsuarioService;
 class UsuarioController extends Controller
 {
-    //
     public function __construct(UsuarioService $usuarioService)
     {
         $this->UsuarioService = $usuarioService;
