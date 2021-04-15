@@ -1,26 +1,42 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Tarefas.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Tarefas from "../views/Tarefas.vue";
+import Tarefa from "../components/Tarefa";
+import Login from "../views/login_.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Homqqe',
-    component: Home
+    path: "/tarefas",
+    name: "tarefas",
+    component: Tarefas,
+    children: [
+      {
+        path: "/tarefa",
+        name: "login",
+        component: Tarefa,
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Tarefas.vue')
-  }
-]
+    path: "/",
+    name: "login",
+    component: Login,
+    children: [
+      {
+        path: "/login",
+        name: "login",
+        component: Login,
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

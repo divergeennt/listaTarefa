@@ -1,9 +1,20 @@
 <template>
-<div>
-<v-card
-  elevation="12"
-  loading
-  tile
-></v-card>
-</div>
+  <v-app>
+    <Bar />
+    <v-main>
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
+
+<script>
+import Bar from "../components/Bar";
+
+export default {
+  name: "Tarefas",
+
+  components: {
+    Bar
+  },
+};
+</script>
