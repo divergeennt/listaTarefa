@@ -1,25 +1,25 @@
 <template>
   <v-container align="center" class=" lighten-5 mb-6">
     <v-row justify="center">
-      <template v-for="tarefas in Tarefa">
-        <v-col :key="tarefas" md="2">
+      <template v-for="tarefa in Tarefa">
+        <v-col :key="tarefa" md="2">
           <v-card class="mx-auto mt-6" max-width="344">
             <v-card-title>
-              {{ tarefas.titulo }}
+              {{ tarefa.titulo }}
             </v-card-title>
 
             <v-card-subtitle>
-              {{ tarefas.subtitulo }}
+              {{ tarefa.subtitulo }}
             </v-card-subtitle>
             <v-card-actions>
-              <v-btn v-if="tarefas.status == 'Fazendo'" color="orange" text>
-                {{ tarefas.status }}
+              <v-btn v-if="tarefa.status == 'Fazendo'" color="orange" text>
+                {{ tarefa.status }}
               </v-btn>
-              <v-btn v-if="tarefas.status == 'A fazer'" color="red" text>
-                {{ tarefas.status }}
+              <v-btn v-if="tarefa.status == 'A fazer'" color="red" text>
+                {{ tarefa.status }}
               </v-btn>
-              <v-btn v-if="tarefas.status == 'Concluído'" color="blue" text>
-                {{ tarefas.status }}
+              <v-btn v-if="tarefa.status == 'Concluído'" color="blue" text>
+                {{ tarefa.status }}
               </v-btn>
 
               <v-spacer></v-spacer>
@@ -30,7 +30,7 @@
                 <v-divider></v-divider>
 
                 <v-card-text>
-                  {{ tarefas.descricao }}
+                  {{ tarefa.descricao }}
                 </v-card-text>
               </div>
             </v-expand-transition>

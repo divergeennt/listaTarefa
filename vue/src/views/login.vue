@@ -72,11 +72,11 @@ export default {
         .post("http://127.0.0.1:8000/api/usuario/login", this.dados)
         .then((json) => {
           console.log(json);
-          //  if (json.status == 200) {
-          //   this.$router.push("/tarefas");
-          // } else {
-          //   this.$router.push("/");
-          // }
+           if (json.status == 200) {
+            this.$router.push("/tarefas");
+          } else {
+            this.$router.push("/");
+          }
         })
         .catch((erro) => {
           console.log(erro);
