@@ -1,96 +1,87 @@
 <template>
-    <div class="row fixed-center">
-        <div class="q-pa-md">
-          <q-card bordered class="bg-white my-card" style="width: 350px">
-            <q-card-section>
-                <div class="text-h6">Bem-vindo ao Portal do Aluno</div>
-            </q-card-section>
-
-            <q-separator inset />
-
-            <q-card-section>
-              <q-form
-              @submit="onSubmit"
-              class="q-gutter-md"
-              >
-              <q-input
-                  filled
-                  v-model="cpf"
-                  label="Informe seu CPF *"
-                  mask="###.###.###-##"
-                  lazy-rules
-                  :rules="[ val => val && val.length > 0 || 'CPF não informado']"
-              />
-
-              <q-input
-                  filled
-                  type="password"
-                  v-model="senha"
-                  label="Informe sua Senha *"
-                  lazy-rules
-                  :rules="[
-                  val => val !== null && val !== '' || 'Senha não informada']"
-              />
-
-              
-              <div>
-                  <q-btn label="Entrar" type="submit" color="primary"/>
-            
-                  <q-item clickable>
-                      <router-link to="/cadastrologinaluno">Cadastre-se</router-link>
-                  </q-item>
-              </div>
-              </q-form>
-            </q-card-section>
-            </q-card>
-        </div>
-    </div>
+  <v-container fill-height fluid class="spacing-playground pa-16">
+    <v-row class="justify-center">
+      <v-col cols="12" md="3">
+        <v-card elevation="12" outlined>
+          <v-card-title primary-title>
+            Minhas Tarefas
+          </v-card-title>
+          <v-container fluid>
+            <v-row>
+              <v-col cols="12" md="11">
+                <v-text-field
+                  v-model="dados.login"
+                  label="Login*"
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="11">
+                <v-text-field
+                  v-model="dados.senha"
+                  label="Senha*"
+                ></v-text-field>
+                <h5 class="text-start">
+                  <a href="/cadastro">Esqueceu sua senha?</a>
+                </h5>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="11">
+                <v-btn
+                  color="blue lighten-1"
+                  class="float-right"
+                  @click="onSubmit"
+                  dark
+                >
+                  Entrar
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-  import axios from 'axios';
-  import Vue from 'vue';
-  import VueSweetalert2 from 'vue-sweetalert2';
-  
-  // If you don't need the styles, do not connect
-  import 'sweetalert2/dist/sweetalert2.min.css';
-  
-  Vue.use(VueSweetalert2);
+import axios from "axios";
+import Vue from "vue";
+import VueSweetalert2 from "vue-sweetalert2";
 
-  export default {
-    data () {
-      return {
-        cpf: null,
+// If you don't need the styles, do not connect
+import "sweetalert2/dist/sweetalert2.min.css";
+
+Vue.use(VueSweetalert2);
+
+export default {
+  data() {
+    return {
+      token: null,
+      dados: {
+        login: null,
         senha: null,
-        token:null
-      }
-    },
+      },
+    };
+  },
 
-    methods: {
-      onSubmit () {
-        axios.post('http://127.0.0.1:8000/api/login',{ cpf: this.cpf, senha: this.senha })
-        .then(response => {
-          if (response.data.tipo == 'erro') {
-              this.$swal.fire({
-                  icon: 'error',
-                  title: '',
-                  text: response.data.mensagem,
-                  footer: ''
-              })
-          }else{
-            localStorage.academia_dadosUsuario = JSON.stringify(response.data);
-            this.$router.push('/extratofinanceiro') 
-          }
+  methods: {
+    onSubmit() {
+      axios
+        .post("http://127.0.0.1:8000/api/usuario/login", this.dados)
+        .then((json) => {
+          console.log(json);
+          //  if (json.status == 200) {
+          //   this.$router.push("/tarefas");
+          // } else {
+          //   this.$router.push("/");
+          // }
         })
-        .catch(() => {
-            this.$q.notify({
-                type: 'negative',
-                position: 'bottom',
-                message: 'Falha no acesso aos dados.',
-                icon: 'report_problem'
-            })
-        })
-      }
-    }
-  }
-</script> 
+        .catch((erro) => {
+          console.log(erro);
+        });
+    },
+  },
+};
+</script>

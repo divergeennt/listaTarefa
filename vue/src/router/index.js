@@ -1,8 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Tarefas from "../views/Tarefas.vue";
-import Tarefa from "../components/Tarefa";
-import Login from "../views/login_.vue";
+import Login from "../views/login.vue";
 
 Vue.use(VueRouter);
 
@@ -11,25 +10,12 @@ const routes = [
     path: "/tarefas",
     name: "tarefas",
     component: Tarefas,
-    children: [
-      {
-        path: "/tarefa",
-        name: "tarefa",
-        component: Tarefa,
-      },
-    ],
+
   },
   {
     path: "/",
     name: "login",
     component: Login,
-    children: [
-      {
-        path: "/login",
-        name: "login",
-        component: Login,
-      },
-    ],
   },
 ];
 
